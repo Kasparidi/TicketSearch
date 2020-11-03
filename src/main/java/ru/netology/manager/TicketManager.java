@@ -3,11 +3,15 @@ package ru.netology.manager;
 import ru.netology.domain.TicketInfoPost;
 import ru.netology.repository.TicketRepository;
 
+import java.util.Arrays;
+
 public class TicketManager {
     private TicketRepository repository;
     public TicketManager(TicketRepository repository) {
         this.repository = repository;
     }
+
+    private TicketInfoPost[] items = new TicketInfoPost[0];
 
     public void add(TicketInfoPost item) {
         repository.save(item);
@@ -29,8 +33,7 @@ public class TicketManager {
                 result = tmp;
             }
         }
-
-
+        Arrays.sort(items);
         return result;
     }
 

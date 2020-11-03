@@ -7,10 +7,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class TicketInfoPost {
+public class TicketInfoPost implements Comparable <TicketInfoPost> {
     int id;
-    double coast;
+    int cost;
     String departureAirport;
     String arrivalAirport;
     int travelTime;
+
+    @Override
+    public int compareTo(TicketInfoPost o) {
+        TicketInfoPost p = (TicketInfoPost) o;
+        return cost - p.cost;
+    }
 }
+
+
