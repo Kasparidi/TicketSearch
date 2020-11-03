@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.TicketInfoPost;
 import ru.netology.repository.TicketRepository;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TicketManagerTest {
@@ -28,12 +26,32 @@ class TicketManagerTest {
     }
 
     @Test
-    void searchBy() {
+    void searchByFromTo() {
         String from = "DME";
         String to = "SHJ";
         manager.searchBy(from, to);
+        TicketInfoPost[] actual = manager.searchBy("DME", "SHJ");
         TicketInfoPost[] expected = new TicketInfoPost[] {forth, second, first};
-        TicketInfoPost[] actual = new TicketInfoPost[] {first, second, forth};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void searchByFromToAnotherData() {
+        String from = "SVO";
+        String to = "VCE";
+        manager.searchBy(from, to);
+        TicketInfoPost[] actual = manager.searchBy("SVO", "VCE");
+        TicketInfoPost[] expected = new TicketInfoPost[] {third};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void searchIfNotExist() {
+        String from = "SHJ";
+        String to = "DME";
+        manager.searchBy(from, to);
+        TicketInfoPost[] actual = manager.searchBy("SHJ", "DME");
+        TicketInfoPost[] expected = new TicketInfoPost[] {};
         assertArrayEquals(expected, actual);
     }
 }
