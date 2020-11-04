@@ -16,8 +16,7 @@ public class TicketInfoPost implements Comparable <TicketInfoPost> {
 
     @Override
     public int compareTo(TicketInfoPost o) {
-        TicketInfoPost p = (TicketInfoPost) o;
-        return cost - p.cost;
+        return cost - o.cost;
     }
 }
 
