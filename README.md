@@ -12,3 +12,6 @@
 ### LAUNCH
 1. Открыть окно инструментов Maven в IDEA.
 1. В меню Lifecycle запустить test.
+
+### TOOLS
+Java, Maven, JUnit Jupiter, Jacoco
